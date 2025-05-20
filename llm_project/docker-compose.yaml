@@ -1,0 +1,21 @@
+services:
+  ollama-server:
+    image: ollama/ollama 
+    ports:
+      - "11434:11434"
+    networks:
+      - my-network
+
+  controller-server:
+    build:
+      context: ./controller-server
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ollama-server
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

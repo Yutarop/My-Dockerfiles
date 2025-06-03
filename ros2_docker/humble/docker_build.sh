@@ -1,1 +1,1 @@
-docker build -t tiryoh/ros2-desktop-vnc:humble .
+docker build -t yutarop/my-ros2-desktop:latest .

@@ -19,4 +19,4 @@ sudo docker run \
     --security-opt seccomp=unconfined \
     --env USER=ubuntu \
     --env PASSWORD="$PASSWORD" \
-    tiryoh/ros2-desktop-vnc:humble
+    yutarop/my-ros2-desktop:latest

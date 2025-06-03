@@ -124,7 +124,8 @@ RUN /bin/bash -c "source /opt/ros/humble/setup.bash; colcon build"
 # Update .bashrc with custom aliases
 RUN echo "" >> ~/.bashrc && \
     echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
-    echo "alias cm='cd ~/ros2_ws;colcon build;source ~/.bashrc'" >> ~/.bashrc && \
+    echo "alias cm='cd ~/ros2_ws;colcon build;source ~/.bashrc'" >> ~/.bashrc
+
 # Switch back to 'root' user
 USER root
 COPY ./entrypoint.sh /

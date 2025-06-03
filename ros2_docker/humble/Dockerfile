@@ -101,6 +101,8 @@ RUN useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubunt
     chown -R ubuntu:ubuntu /home
 
 # Clone packages related to livox and setup ip address
+USER ubuntu
+WORKDIR /home/ubuntu/ros2_ws/src
 RUN mkdir livox && cd livox && \
     git clone https://github.com/Ericsii/livox_ros_driver2.git && \
     git clone https://github.com/porizou/livox_to_pointcloud2.git && \

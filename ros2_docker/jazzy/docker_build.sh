@@ -1,0 +1,1 @@
+docker build -t yutarop/my-ros2-desktop-jazzy:latest .

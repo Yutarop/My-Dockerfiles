@@ -19,4 +19,4 @@ sudo docker run \
     --security-opt seccomp=unconfined \
     --env USER=ubuntu \
     --env PASSWORD="$PASSWORD" \
-    yutarop/my-ros2-desktop-jazzy:latest
+    yutarop/my-ros2-desktop:jazzy

@@ -100,6 +100,26 @@ RUN useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubunt
     mkdir -p /home/ubuntu/ros2_ws/src && \
     chown -R ubuntu:ubuntu /home
 
+
+RUN python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location \
+    pip \
+    setuptools==58.2.0 \
+    pymodbus==3.2.2 \
+    numpy==1.24.4 \
+    numpy-quaternion==2022.4.3 \
+    Pillow==9.5.0 \
+    ruamel.yaml==0.17.32 \
+    ruamel.yaml.clib==0.2.7 \
+    transforms3d==0.4.2
+
+# Clone and build orange_ros2 package as 'ubuntu' user
+USER ubuntu
+WORKDIR /home/ubuntu/ros2_ws/src
+RUN git clone -b devel/VLP-16 https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git && \
+    wstool init . && \
+    wstool merge orange_ros2/orange_ros2.rosinstall && wstool update && \
+    wstool merge icm_20948/icm_20948.rosinstall && wstool update
+
 # Switch to 'root' user for rosdep install
 USER root
 RUN apt-get update && \
